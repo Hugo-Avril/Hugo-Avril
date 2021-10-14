@@ -1,0 +1,13 @@
+
+INCLUDE= -I ~/Informatique/S3/include
+OPTIONS= -Wall -ggdb3 -Werror -Wextra
+TESTS= -DTESTS -DUSECOLORS
+
+nouvelle_fraction.o : nouvelle_fraction.c
+	gcc $(INCLUDE) $(OPTIONS) -c nouvelle_fraction.c -o nouvelle_fraction.o
+
+~/Informatique/S3/bin/nouvelle_fraction: nouvelle_fraction.c
+	gcc $(INCLUDE) $(OPTIONS) -o ~/Informatique/S3/bin/nouvelle_fraction $(TESTS) nouvelle_fraction.c
+
+run/nouvelle_fraction: ~/Informatique/S3/bin/nouvelle_fraction
+	~/Informatique/S3/bin/nouvelle_fraction
