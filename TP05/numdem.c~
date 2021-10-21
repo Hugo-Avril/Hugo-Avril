@@ -1,0 +1,9 @@
+struct fraction_s *
+numerateur (struct fraction_s * f){
+  return f->q;
+}
+
+struct raction_s *
+denominateur (struct fraction_s * f){
+  return f->p;
+}

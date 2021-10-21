@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include "fraction.h"
 
-
 struct fraction_s *
 nouvelle_fraction (int touyoutou, int toutouyoutou){
     struct fraction_s * t;
@@ -23,12 +22,11 @@ nouvelle_fraction (int touyoutou, int toutouyoutou){
 int main(){
     struct fraction_s * f;
     f=nouvelle_fraction(1,2);
-    VAL_INT(f->p);
-    TEST_RES(f->q==2);
+    VAL_INT(numerateur(f));
+    TEST_RES(denominateur(f)==2);
     return 0;
 }
 #endif
-
 
 
 //struct fraction * f;
