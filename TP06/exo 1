@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+const int NB_LIGNES=2;
+const int NB_COLONNES=2;
+
+
+typedef float Matrice[2][2];
+
+int affiche_matrice(Matrice Mat){
+    for (int m=0;m<NB_LIGNES;m++){
+        for (int n=0;n<NB_COLONNES;n++){
+            printf (" %f ",Mat[m][n]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+int main(){
+    Matrice M;
+    M[0][0]=1;
+    M[0][1]=2;
+    M[1][0]=3;
+    M[1][1]=4;
+    affiche_matrice(M);
+}
