@@ -1,0 +1,56 @@
+//FICHIER matrices.h
+
+#include <stdio.h>
+
+typedef struct matrice_s {
+    int nb_lignes ;
+    int nb_colonnes ;
+    float ** m ;
+} matrice;
+
+
+
+matrice creer_matrice(int lignes,int colonnes){
+    float a;
+    matrice *Mat;
+    Mat.nb_lignes=lignes;
+    Mat.nb_colonnes=colonnes;
+    for (int i=0;i<lignes;i++){
+        printf("Quels sont les coefficients de la ligne %d ? \n",i+1);
+        for (int j=0;j<colonnes;j++){
+            scanf("%f",&a);
+            Mat.m[i][j]=a;
+        }
+    }
+    return Mat;
+}
+
+/*
+int affiche_matrice(Matrice Mata){
+    for (int m=0;m<(m->nb_colonnes);m++){
+        for (int n=0;n<(m->nb_lignes);n++){
+            printf (" %f ",Mata[m][n]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+*/
+
+
+int main () {
+    matrice m = creer_matrice ( 2 , 3 ) ;
+    for ( int i = 0 ; i < m.nb_lignes ; i++ ) {
+        for ( int j = 0 ; j < m.nb_colonnes ; j++ ) {
+            m.m[i][j] = i + j ;
+        }
+    }
+    for ( int i = 0 ; i < m.nb_lignes ; i++ ) {
+        printf("( " ) ;
+        for ( int j = 0 ; j < m.nb_colonnes ; j++ ) {
+            printf ( "%5.2 " , m.m[i][j] ) ;
+        }
+        printf ( ")\n" ) ;
+    }
+    return 0 ;
+}
