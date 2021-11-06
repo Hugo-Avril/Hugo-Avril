@@ -39,13 +39,17 @@ int demande_coeff(Matrice Mat){
 
 
 int main(){
-    Matrice Matri;
-    Matrice M;
-    M[0][0]=1;
-    M[0][1]=2;
-    M[1][0]=3;
-    M[1][1]=4;
-    affiche_matrice(M);
-    demande_coeff (Matri);
-    affiche_matrice(Matri);
+    Matrice m1;
+    Matrice m2;
+    //Matrice M;
+    //M[0][0]=1;
+    //M[0][1]=2;
+    //M[1][0]=3;
+    //M[1][1]=4;
+    //affiche_matrice(M);
+    demande_coeff (m1);
+    demande_coeff (m2);
+    affiche_matrice(m1);
+    printf("\n");
+    affiche_matrice(m2);
 }
