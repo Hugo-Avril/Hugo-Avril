@@ -1,6 +1,7 @@
 //FICHIER matrices.h
 
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct matrice_s {
     int nb_lignes ;
@@ -10,16 +11,23 @@ typedef struct matrice_s {
 
 
 
-matrice creer_matrice(int lignes,int colonnes){
+matrice * creer_matrice (int lignes,int colonnes){
     float a;
     matrice *Mat;
-    Mat.nb_lignes=lignes;
-    Mat.nb_colonnes=colonnes;
+    Mat=(struct matrice_s *) malloc (sizeof(struct matrice_s));
+    Mat->nb_lignes=lignes;
+    Mat->nb_colonnes=colonnes;
+    Mat->m=(float **) malloc (lignes * sizeof(float *));
+    
+    for (int i=0;i<lignes; i++){
+        Mat->m[i]=(float *) malloc (colonnes * sizeof(float));
+    }
+    
     for (int i=0;i<lignes;i++){
         printf("Quels sont les coefficients de la ligne %d ? \n",i+1);
         for (int j=0;j<colonnes;j++){
             scanf("%f",&a);
-            Mat.m[i][j]=a;
+            Mat->m[i][j]=a;
         }
     }
     return Mat;
@@ -39,16 +47,16 @@ int affiche_matrice(Matrice Mata){
 
 
 int main () {
-    matrice m = creer_matrice ( 2 , 3 ) ;
-    for ( int i = 0 ; i < m.nb_lignes ; i++ ) {
-        for ( int j = 0 ; j < m.nb_colonnes ; j++ ) {
-            m.m[i][j] = i + j ;
+    matrice * m=creer_matrice (2,3);
+    for ( int i = 0 ; i < m->nb_lignes ; i++ ) {
+        for ( int j = 0 ; j < m->nb_colonnes ; j++ ) {
+            m->m[i][j] = i + j ;
         }
     }
-    for ( int i = 0 ; i < m.nb_lignes ; i++ ) {
+    for ( int i = 0 ; i < m->nb_lignes ; i++ ) {
         printf("( " ) ;
-        for ( int j = 0 ; j < m.nb_colonnes ; j++ ) {
-            printf ( "%5.2 " , m.m[i][j] ) ;
+        for ( int j = 0 ; j < m->nb_colonnes ; j++ ) {
+            printf ( "%f " , m->m[i][j] ) ;
         }
         printf ( ")\n" ) ;
     }
